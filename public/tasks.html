@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local task board</title>
+    <link rel="stylesheet" href="/board.css">
+    <script defer src="/board.js"></script>
+</head>
+<body>
+    <header class="masthead">
+        <a href="/">Socket server</a>
+        <a href="/health">Server health</a>
+    </header>
+    <main>
+        <h1>Task board</h1>
+        <dl class="summary" aria-label="Task totals">
+            <div><dt>Total</dt><dd id="total-count">0</dd></div>
+            <div><dt>To do</dt><dd id="todo-count">0</dd></div>
+            <div><dt>Doing</dt><dd id="doing-count">0</dd></div>
+            <div><dt>Done</dt><dd id="done-count">0</dd></div>
+        </dl>
+
+        <div class="columns">
+            <section aria-labelledby="tasks-title">
+                <h2 id="tasks-title">Tasks</h2>
+                <form id="filters">
+                    <label class="wide">Search
+                        <input name="q" placeholder="Title or notes" type="search">
+                    </label>
+                    <label>State
+                        <select name="state">
+                            <option value="">All states</option>
+                            <option value="todo">To do</option>
+                            <option value="doing">Doing</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </label>
+                    <label>Priority
+                        <select name="priority">
+                            <option value="">All priorities</option>
+                            <option value="low">Low</option>
+                            <option value="normal">Normal</option>
+                            <option value="high">High</option>
+                        </select>
+                    </label>
+                    <label>Sort
+                        <select name="sort">
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                            <option value="priority">Priority</option>
+                            <option value="title">Title</option>
+                        </select>
+                    </label>
+                    <button type="submit">Apply</button>
+                </form>
+                <p id="list-message" role="status"></p>
+                <ol id="task-list"></ol>
+                <nav class="pager" aria-label="Task pages">
+                    <button id="previous" type="button" disabled>Previous</button>
+                    <span id="page-label"></span>
+                    <button id="next" type="button" disabled>Next</button>
+                </nav>
+            </section>
+
+            <section aria-labelledby="editor-title">
+                <h2 id="editor-title">New task</h2>
+                <form id="editor">
+                    <label>Title
+                        <input name="title" required maxlength="120">
+                    </label>
+                    <label>Notes
+                        <textarea name="notes" rows="5" maxlength="1200"></textarea>
+                    </label>
+                    <label>State
+                        <select name="state">
+                            <option value="todo">To do</option>
+                            <option value="doing">Doing</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </label>
+                    <label>Priority
+                        <select name="priority">
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                            <option value="high">High</option>
+                        </select>
+                    </label>
+                    <div class="actions">
+                        <button id="save" type="submit">Create task</button>
+                        <button id="cancel-edit" type="button" hidden>Cancel edit</button>
+                        <button id="remove" type="button" hidden>Delete</button>
+                    </div>
+                </form>
+                <p id="editor-message" role="status"></p>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
