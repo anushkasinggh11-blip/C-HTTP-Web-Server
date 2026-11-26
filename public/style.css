@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    background: #fff;
+    color: #111;
+    font: 1rem/1.6 system-ui, sans-serif;
+}
+
+main {
+    max-width: 36rem;
+    margin: 12vh auto 0;
+    padding: 1.5rem;
+    border-top: 2px solid #111;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2rem, 8vw, 4rem);
+    line-height: 1.1;
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+}
